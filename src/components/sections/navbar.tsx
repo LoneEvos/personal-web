@@ -63,9 +63,15 @@ export function Navbar() {
               e.preventDefault();
               handleNavClick('#home');
             }}
-            className="font-display text-xl font-normal text-off-white transition-colors hover:text-teal"
+            className="group flex items-center gap-3 text-off-white"
+            aria-label={`${profile.name} home`}
           >
-            {profile.name}
+            <span className="flex h-10 w-10 items-center justify-center rounded-card border border-elevated bg-surface font-display text-base font-bold tracking-[-0.04em] transition-colors group-hover:border-muted group-hover:bg-surface-alt">
+              TG
+            </span>
+            <span className="hidden font-body text-sm font-medium text-subtle transition-colors group-hover:text-off-white sm:inline">
+              Teddy Steven Gotama
+            </span>
           </a>
 
           <ul className="hidden items-center gap-1 lg:flex">

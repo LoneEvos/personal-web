@@ -17,6 +17,10 @@ export const metadata: Metadata = {
     'DMU',
   ],
   authors: [{ name: 'Teddy Steven Gotama' }],
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+  },
   openGraph: {
     title: 'Teddy Steven Gotama - Software Engineering Student',
     description:
