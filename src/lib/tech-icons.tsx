@@ -48,6 +48,7 @@ const fallbackIcons: Record<string, FallbackIcon> = {
   'Artificial Intelligence': BrainCircuit,
   'Full-Stack Development': Code2,
   'Personal Projects': FolderGit2,
+  'React Bits': ReactBitsIcon,
   'Framer Motion': FramerMotionIcon,
   'Lucide React': Server,
 };
@@ -71,6 +72,30 @@ function FramerMotionIcon({
       <path d="M5 3h14v6H5V3Z" fill="#F3EFE4" />
       <path d="M5 9h7l7 6H5V9Z" fill="#A49B8D" />
       <path d="M5 15h7v6L5 15Z" fill="#D7A84F" />
+    </svg>
+  );
+}
+
+function ReactBitsIcon({
+  size = 18,
+  className,
+}: {
+  size?: number;
+  className?: string;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <rect x="4" y="4" width="7" height="7" rx="1.5" fill="#D7A84F" />
+      <rect x="13" y="4" width="7" height="7" rx="1.5" fill="#F3EFE4" />
+      <rect x="4" y="13" width="7" height="7" rx="1.5" fill="#8FA386" />
+      <rect x="13" y="13" width="7" height="7" rx="1.5" fill="#7B93AD" />
     </svg>
   );
 }

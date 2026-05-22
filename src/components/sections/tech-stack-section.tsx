@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionContainer, SectionHeading } from '@/components/ui/section-container';
+import { MagicBento } from '@/components/ui/magic-bento';
 import { techStack, techCategories } from '@/data/tech-stack';
 import { TechIcon } from '@/lib/tech-icons';
 import { cn } from '@/lib/utils';
@@ -63,20 +64,14 @@ function TechCard({ tech, index }: { tech: TechItem; index: number }) {
       transition={{ delay: index * 0.05, duration: 0.4 }}
       className="group relative"
     >
-      <div
-        className={cn(
-          'flex items-center gap-4 rounded-card border border-elevated bg-surface p-4',
-          'transition-colors duration-200',
-          'hover:border-muted hover:bg-surface-alt'
-        )}
-      >
+      <MagicBento contentClassName="flex items-center gap-4 p-4">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-card border border-elevated bg-deep text-muted">
           <TechIcon name={tech.name} size={22} />
         </div>
         <span className="font-body text-sm font-medium text-muted transition-colors group-hover:text-off-white">
           {tech.name}
         </span>
-      </div>
+      </MagicBento>
     </motion.div>
   );
 }

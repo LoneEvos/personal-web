@@ -6,21 +6,21 @@
 
 @theme {
   /* ---- Colors: Backgrounds ---- */
-  --color-deep: #11100D;
-  --color-surface: #171511;
-  --color-surface-alt: #211E18;
-  --color-elevated: #393329;
+  --color-deep: #08090C;
+  --color-surface: #11131A;
+  --color-surface-alt: #191D28;
+  --color-elevated: #313746;
 
   /* ---- Colors: Accents ---- */
   --color-teal: #D7A84F;
-  --color-tech-cyan: #8FA386;
+  --color-tech-cyan: #B9C7FF;
   --color-ts-blue: #7B93AD;
   --color-pac-yellow: #E0C86F;
 
   /* ---- Colors: Text ---- */
   --color-off-white: #F3EFE4;
-  --color-subtle: #A49B8D;
-  --color-muted: #C9C0B2;
+  --color-subtle: #9FA6B4;
+  --color-muted: #C9D0DE;
 
   /* ---- Colors: Semantic ---- */
   --color-success: #339933;

@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { timelineEntries } from '@/data/experience';
 import { SectionContainer, SectionHeading } from '@/components/ui/section-container';
+import { MagicBento } from '@/components/ui/magic-bento';
 import { cn } from '@/lib/utils';
 import type { TimelineEntry } from '@/data/experience';
 
@@ -80,17 +81,15 @@ function TimelineItem({ entry, index }: { entry: TimelineEntry; index: number })
       </div>
 
       <div className={cn('flex-1 md:w-[calc(50%-2rem)]', isLeft ? 'md:pr-8' : 'md:pl-8')}>
-        <div
-          className={cn(
-            'rounded-card border border-elevated bg-surface p-6 card-hover',
-            isLeft ? 'md:ml-auto' : ''
-          )}
+        <MagicBento
+          className={cn(isLeft ? 'md:ml-auto' : '')}
+          contentClassName="p-6"
         >
           <span className="font-mono text-xs font-bold text-teal">{entry.date}</span>
           <h3 className="mt-2 font-display text-lg font-bold text-off-white">{entry.title}</h3>
           <p className="mt-1 text-sm font-medium text-subtle">{entry.institution}</p>
           <p className="mt-3 text-sm text-subtle leading-relaxed">{entry.description}</p>
-        </div>
+        </MagicBento>
       </div>
 
       <div className="hidden flex-1 md:block" />

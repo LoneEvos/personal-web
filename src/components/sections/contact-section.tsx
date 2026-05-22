@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react';
 import { SectionContainer } from '@/components/ui/section-container';
+import { MagicBento } from '@/components/ui/magic-bento';
 import { socialLinks } from '@/data/social-links';
 import { profile } from '@/data/profile';
 import { AnimatedWrapper } from '@/components/ui/animated-wrapper';
@@ -13,7 +14,10 @@ export function ContactSection() {
     <SectionContainer id="contact" className="border-t border-elevated/60">
       <AnimatedWrapper>
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,0.7fr)] lg:items-stretch">
-          <div className="flex min-h-[360px] flex-col justify-between border border-elevated bg-surface p-6 md:p-8">
+          <MagicBento
+            className="min-h-[360px]"
+            contentClassName="flex min-h-[360px] flex-col justify-between p-6 md:p-8"
+          >
             <div>
               <span className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-teal">
                 Contact
@@ -44,36 +48,34 @@ export function ContactSection() {
                 <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
             </div>
-          </div>
+          </MagicBento>
 
           <div className="grid gap-3">
-            <a
-              href={`mailto:${profile.email}`}
-              className="group border border-elevated bg-deep p-5 transition-colors hover:border-muted hover:bg-surface"
-            >
-              <div className="flex items-center justify-between gap-5">
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-teal">Email</p>
-                  <p className="mt-3 break-all text-sm text-off-white">{profile.email}</p>
+            <MagicBento contentClassName="h-full">
+              <a href={`mailto:${profile.email}`} className="block p-5">
+                <div className="flex items-center justify-between gap-5">
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-teal">Email</p>
+                    <p className="mt-3 break-all text-sm text-off-white">{profile.email}</p>
+                  </div>
+                  <Mail size={18} className="shrink-0 text-subtle transition-colors group-hover:text-off-white" />
                 </div>
-                <Mail size={18} className="shrink-0 text-subtle transition-colors group-hover:text-off-white" />
-              </div>
-            </a>
+              </a>
+            </MagicBento>
 
-            <a
-              href={`tel:${profile.phone.replace(/[^\d+]/g, '')}`}
-              className="group border border-elevated bg-deep p-5 transition-colors hover:border-muted hover:bg-surface"
-            >
-              <div className="flex items-center justify-between gap-5">
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-teal">Phone</p>
-                  <p className="mt-3 text-sm text-off-white">{profile.phone}</p>
+            <MagicBento contentClassName="h-full">
+              <a href={`tel:${profile.phone.replace(/[^\d+]/g, '')}`} className="block p-5">
+                <div className="flex items-center justify-between gap-5">
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-teal">Phone</p>
+                    <p className="mt-3 text-sm text-off-white">{profile.phone}</p>
+                  </div>
+                  <Phone size={18} className="shrink-0 text-subtle transition-colors group-hover:text-off-white" />
                 </div>
-                <Phone size={18} className="shrink-0 text-subtle transition-colors group-hover:text-off-white" />
-              </div>
-            </a>
+              </a>
+            </MagicBento>
 
-            <div className="border border-elevated bg-deep p-5">
+            <MagicBento contentClassName="p-5">
               <div className="flex items-center justify-between gap-5">
                 <div>
                   <p className="font-mono text-xs uppercase tracking-[0.18em] text-teal">Location</p>
@@ -81,31 +83,29 @@ export function ContactSection() {
                 </div>
                 <MapPin size={18} className="shrink-0 text-subtle" />
               </div>
-            </div>
+            </MagicBento>
 
             <div className="grid grid-cols-2 gap-3">
               {socialLinks.map((link) => {
                 const Icon = getSocialIcon(link.icon);
                 return (
-                  <a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(
-                      'group flex min-h-24 flex-col justify-between border border-elevated bg-deep p-5',
-                      'transition-colors duration-200 hover:border-muted hover:bg-surface'
-                    )}
-                    aria-label={link.name}
-                  >
-                    <div className="flex items-center justify-between">
-                      <Icon size={19} className="text-off-white" />
-                      <ArrowUpRight size={15} className="text-subtle transition-colors group-hover:text-off-white" />
-                    </div>
-                    <span className="font-body text-sm font-semibold text-off-white">
-                      {link.name}
-                    </span>
-                  </a>
+                  <MagicBento key={link.name} contentClassName="h-full">
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex min-h-24 flex-col justify-between p-5"
+                      aria-label={link.name}
+                    >
+                      <div className="flex items-center justify-between">
+                        <Icon size={19} className="text-off-white" />
+                        <ArrowUpRight size={15} className="text-subtle transition-colors group-hover:text-off-white" />
+                      </div>
+                      <span className="font-body text-sm font-semibold text-off-white">
+                        {link.name}
+                      </span>
+                    </a>
+                  </MagicBento>
                 );
               })}
             </div>

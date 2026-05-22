@@ -2,8 +2,8 @@
 
 import { GraduationCap, Target, Lightbulb, BookOpen } from 'lucide-react';
 import { SectionContainer, SectionHeading } from '@/components/ui/section-container';
-import { Card, CardTitle, CardDescription } from '@/components/ui/card';
 import { AnimatedWrapper, StaggerContainer, StaggerItem } from '@/components/ui/animated-wrapper';
+import { MagicBento } from '@/components/ui/magic-bento';
 
 const aboutCards = [
   {
@@ -64,13 +64,15 @@ export function AboutSection() {
         <StaggerContainer className="grid gap-4 sm:grid-cols-2">
           {aboutCards.map((card) => (
             <StaggerItem key={card.title}>
-              <Card className="h-full">
+              <MagicBento className="h-full" contentClassName="p-6">
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-card border border-elevated bg-deep text-teal">
                   <card.icon size={20} />
                 </div>
-                <CardTitle className="text-lg mb-2">{card.title}</CardTitle>
-                <CardDescription>{card.description}</CardDescription>
-              </Card>
+                <h3 className="font-display text-lg font-normal text-off-white mb-2">
+                  {card.title}
+                </h3>
+                <p className="text-sm text-subtle leading-relaxed">{card.description}</p>
+              </MagicBento>
             </StaggerItem>
           ))}
         </StaggerContainer>

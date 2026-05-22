@@ -21,6 +21,7 @@ export const techStack: TechItem[] = [
   { name: 'SQL', color: '#C9C0B2', category: 'languages' },
 
   { name: 'React', color: '#8FA386', category: 'frameworks-tools' },
+  { name: 'React Bits', color: '#D7A84F', category: 'frameworks-tools' },
   { name: 'Node.js', color: '#8FA386', category: 'frameworks-tools' },
   { name: 'Git', color: '#D7A84F', category: 'frameworks-tools' },
   { name: 'GitHub', color: '#F3EFE4', category: 'frameworks-tools' },

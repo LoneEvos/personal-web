@@ -7,12 +7,23 @@ import { LinkButton } from '@/components/ui/button';
 import { SectionContainer } from '@/components/ui/section-container';
 import { TechBadge } from '@/components/ui/tech-badge';
 import { ScrollIndicator } from '@/components/ui/scroll-indicator';
+import { TextType } from '@/components/ui/text-type';
+import { MagicBento } from '@/components/ui/magic-bento';
 import { fadeUpVariants } from '@/lib/utils';
 
 const focusItems = [
   'Full-stack development',
   'Artificial intelligence',
   'Practical software solutions',
+];
+
+const animatedKeywords = ['development', 'AI', 'solutions', 'learning'];
+
+const typePhrases = [
+  "Hi, I'm Teddy",
+  'Software Engineering Student',
+  'Full-stack development learner',
+  'Building practical AI ideas',
 ];
 
 export function HeroSection() {
@@ -33,9 +44,9 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
             variants={fadeUpVariants}
-            className="mb-7 inline-flex border-l border-teal pl-4 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-teal"
+            className="mb-7 inline-flex min-h-5 border-l border-teal pl-4 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-teal"
           >
-            {profile.greeting} {profile.title}
+            <TextType phrases={typePhrases} />
           </motion.span>
 
           <motion.h1
@@ -74,45 +85,92 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        <motion.aside
+        <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="border border-elevated bg-surface p-5 shadow-elevated"
         >
-          <div className="flex items-center gap-2 text-sm text-subtle">
-            <MapPin size={15} className="text-teal" />
-            {profile.location}
-          </div>
-
-          <div className="mt-7 border-t border-elevated pt-5">
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-              Current focus
-            </p>
-            <ul className="mt-4 space-y-3">
-              {focusItems.map((item) => (
-                <li key={item} className="flex gap-3 text-sm leading-6 text-muted">
-                  <span className="mt-2 h-px w-5 shrink-0 bg-teal" aria-hidden="true" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mt-7 border-t border-elevated pt-5">
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-              Working with
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {profile.heroBadges.map((badge) => (
-                <TechBadge key={badge} name={badge} size="sm" />
-              ))}
+          <MagicBento contentClassName="p-5">
+            <div className="flex items-center gap-2 text-sm text-subtle">
+              <MapPin size={15} className="text-teal" />
+              {profile.location}
             </div>
-          </div>
-        </motion.aside>
+
+            <div className="mt-7 border-t border-elevated pt-5">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+                Current focus
+              </p>
+              <AnimatedFocusPanel />
+            </div>
+
+            <div className="mt-7 border-t border-elevated pt-5">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+                Working with
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {profile.heroBadges.map((badge) => (
+                  <TechBadge key={badge} name={badge} size="sm" />
+                ))}
+              </div>
+            </div>
+          </MagicBento>
+        </motion.div>
       </div>
 
       <ScrollIndicator />
     </SectionContainer>
+  );
+}
+
+function AnimatedFocusPanel() {
+  return (
+    <div className="mt-4 overflow-hidden border border-elevated bg-deep p-4">
+      <div className="flex flex-wrap gap-2">
+        {animatedKeywords.map((keyword, index) => (
+          <motion.span
+            key={keyword}
+            initial={{ opacity: 0, y: 14, rotate: -1 }}
+            animate={{
+              opacity: 1,
+              y: [0, -4, 0],
+              rotate: [0, index % 2 === 0 ? 0.6 : -0.6, 0],
+            }}
+            transition={{
+              opacity: { duration: 0.45, delay: 0.35 + index * 0.08 },
+              y: {
+                duration: 4 + index * 0.35,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: index * 0.2,
+              },
+              rotate: {
+                duration: 4.5 + index * 0.2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: index * 0.18,
+              },
+            }}
+            className="inline-flex border border-teal/30 bg-teal/10 px-2.5 py-1 font-mono text-xs uppercase tracking-[0.14em] text-off-white"
+          >
+            {keyword}
+          </motion.span>
+        ))}
+      </div>
+
+      <ul className="mt-5 space-y-3">
+        {focusItems.map((item, index) => (
+          <motion.li
+            key={item}
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.45, delay: 0.55 + index * 0.08 }}
+            className="flex gap-3 text-sm leading-6 text-muted"
+          >
+            <span className="mt-2 h-px w-5 shrink-0 bg-teal" aria-hidden="true" />
+            {item}
+          </motion.li>
+        ))}
+      </ul>
+    </div>
   );
 }

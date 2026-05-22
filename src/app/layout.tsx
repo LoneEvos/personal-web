@@ -38,7 +38,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-body antialiased">
-        <div className="noise-overlay" aria-hidden="true" />
         <div className="relative z-10 min-h-screen">{children}</div>
       </body>
     </html>
