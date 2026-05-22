@@ -1,0 +1,284 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN SYSTEM TOKENS
+   ============================================ */
+
+@theme {
+  /* ---- Colors: Backgrounds ---- */
+  --color-deep: #11100D;
+  --color-surface: #171511;
+  --color-surface-alt: #211E18;
+  --color-elevated: #393329;
+
+  /* ---- Colors: Accents ---- */
+  --color-teal: #D7A84F;
+  --color-tech-cyan: #8FA386;
+  --color-ts-blue: #7B93AD;
+  --color-pac-yellow: #E0C86F;
+
+  /* ---- Colors: Text ---- */
+  --color-off-white: #F3EFE4;
+  --color-subtle: #A49B8D;
+  --color-muted: #C9C0B2;
+
+  /* ---- Colors: Semantic ---- */
+  --color-success: #339933;
+  --color-success-alt: #47A248;
+  --color-error: #DC382D;
+
+  /* ---- Typography ---- */
+  --font-display: Georgia, Cambria, 'Times New Roman', serif;
+  --font-body: var(--font-outfit, Inter, ui-sans-serif, system-ui, sans-serif);
+  --font-mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  /* ---- Border Radius ---- */
+  --radius-card: 8px;
+  --radius-card-lg: 8px;
+  --radius-pill: 6px;
+
+  /* ---- Shadows (DESIGN.md elevation levels) ---- */
+  --shadow-elevated: 0px 18px 40px rgba(0, 0, 0, 0.22);
+  --shadow-button: none;
+  --shadow-nav: 0px 10px 30px rgba(0, 0, 0, 0.24);
+
+  /* ---- Animations ---- */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float-delayed 7s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  --animate-spin-slow: spin 12s linear infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+}
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-delayed {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: var(--color-deep);
+  color: var(--color-off-white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgba(215, 168, 79, 0.35);
+  color: var(--color-off-white);
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-elevated);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-teal);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-elevated) var(--color-deep);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Noise overlay for subtle background texture */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url('/noise.svg');
+  background-repeat: repeat;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(23, 21, 17, 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(57, 51, 41, 0.8);
+}
+
+.glass-strong {
+  background: rgba(17, 16, 13, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(57, 51, 41, 0.85);
+}
+
+/* Glow effects */
+.glow-teal {
+  box-shadow: none;
+}
+
+.glow-teal-strong {
+  box-shadow: none;
+}
+
+/* Animated gradient border */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.animated-border {
+  --border-angle: 0deg;
+  border: 1px solid var(--color-elevated);
+  background: var(--color-surface);
+}
+
+@keyframes rotate-border {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* Gradient text */
+.text-gradient {
+  color: var(--color-off-white);
+}
+
+.text-gradient-teal {
+  color: var(--color-teal);
+}
+
+/* Background decorative blurs */
+.blur-orb {
+  display: none;
+}
+
+.blur-orb-teal {
+  background: rgba(36, 219, 201, 0.08);
+}
+
+.blur-orb-blue {
+  background: rgba(49, 120, 198, 0.06);
+}
+
+.blur-orb-cyan {
+  background: rgba(97, 218, 251, 0.05);
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: var(--color-elevated);
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.card-hover:hover {
+  border-color: var(--color-muted);
+  background-color: var(--color-surface-alt);
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
