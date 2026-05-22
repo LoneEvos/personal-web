@@ -124,7 +124,7 @@ export function HeroSection() {
 
 function AnimatedFocusPanel() {
   return (
-    <div className="mt-4 overflow-hidden border border-elevated bg-deep p-4">
+    <div className="mt-4">
       <div className="flex flex-wrap gap-2">
         {animatedKeywords.map((keyword, index) => (
           <motion.span
@@ -150,7 +150,7 @@ function AnimatedFocusPanel() {
                 delay: index * 0.18,
               },
             }}
-            className="inline-flex border border-teal/30 bg-teal/10 px-2.5 py-1 font-mono text-xs uppercase tracking-[0.14em] text-off-white"
+            className="inline-flex border-b border-teal/50 px-0.5 py-1 font-mono text-xs uppercase tracking-[0.14em] text-off-white"
           >
             {keyword}
           </motion.span>
@@ -166,7 +166,7 @@ function AnimatedFocusPanel() {
             transition={{ duration: 0.45, delay: 0.55 + index * 0.08 }}
             className="flex gap-3 text-sm leading-6 text-muted"
           >
-            <span className="mt-2 h-px w-5 shrink-0 bg-teal" aria-hidden="true" />
+            <span className="mt-2 h-px w-5 shrink-0 bg-tech-cyan/70" aria-hidden="true" />
             {item}
           </motion.li>
         ))}

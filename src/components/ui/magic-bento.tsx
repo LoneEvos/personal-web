@@ -19,7 +19,7 @@ export function MagicBento({
 }: MagicBentoProps) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const background = useMotionTemplate`radial-gradient(360px circle at ${mouseX}px ${mouseY}px, rgba(215, 168, 79, 0.15), rgba(185, 199, 255, 0.08) 34%, transparent 68%)`;
+  const background = useMotionTemplate`radial-gradient(360px circle at ${mouseX}px ${mouseY}px, oklch(76% 0.124 82 / 0.15), oklch(84% 0.066 275 / 0.08) 34%, transparent 68%)`;
   const Component = as === 'article' ? motion.article : motion.div;
 
   return (
@@ -32,7 +32,7 @@ export function MagicBento({
       whileHover={{ y: -3 }}
       transition={{ duration: 0.2, ease: 'easeOut' }}
       className={cn(
-        'group relative overflow-hidden rounded-card border border-elevated bg-surface/86 shadow-[0_18px_60px_rgba(0,0,0,0.24)]',
+        'group relative overflow-hidden rounded-card border border-elevated bg-surface/86 shadow-[0_18px_60px_oklch(0%_0_0_/_0.24)]',
         'transition-colors duration-300 hover:border-muted',
         className
       )}

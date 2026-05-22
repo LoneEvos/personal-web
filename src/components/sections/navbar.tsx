@@ -53,7 +53,7 @@ export function Navbar() {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          scrolled ? 'glass-strong shadow-nav py-3' : 'bg-transparent py-4'
+          scrolled ? 'nav-shell shadow-nav py-3' : 'bg-transparent py-4'
         )}
       >
         <nav className="mx-auto flex max-w-[1180px] items-center justify-between px-6 md:px-8">
@@ -122,7 +122,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-deep/80 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-deep/90 lg:hidden"
               onClick={() => setMobileOpen(false)}
               aria-hidden="true"
             />
@@ -131,7 +131,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 z-50 flex h-full w-[min(320px,85vw)] flex-col glass-strong pt-20 lg:hidden"
+              className="fixed top-0 right-0 z-50 flex h-full w-[min(320px,85vw)] flex-col border-l border-elevated bg-surface pt-20 lg:hidden"
             >
               <ul className="flex flex-col gap-2 px-6">
                 {navItems.map((item, i) => (

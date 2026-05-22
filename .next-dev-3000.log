@@ -1,0 +1,11 @@
+
+> web-portfolio@0.1.0 dev
+> next dev --port 3000
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://26.226.251.229:3000
+✓ Ready in 780ms
+
+ GET / 200 in 557ms (next.js: 206ms, application-code: 351ms)
+[?25h

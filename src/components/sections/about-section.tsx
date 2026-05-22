@@ -9,6 +9,7 @@ const aboutCards = [
   {
     icon: GraduationCap,
     title: 'Education',
+    className: 'sm:row-span-2',
     description:
       'BSc (Hons) Software Engineering at Asia Pacific University of Technology & Innovation with a dual degree programme through De Montfort University.',
   },
@@ -27,6 +28,7 @@ const aboutCards = [
   {
     icon: BookOpen,
     title: 'Coursework',
+    className: 'sm:col-span-2',
     description:
       'Object-Oriented Programming and Database Systems, supported by continuous learning through projects and certifications.',
   },
@@ -61,11 +63,11 @@ export function AboutSection() {
           </div>
         </AnimatedWrapper>
 
-        <StaggerContainer className="grid gap-4 sm:grid-cols-2">
+        <StaggerContainer className="grid gap-4 sm:grid-cols-[1.08fr_0.92fr]">
           {aboutCards.map((card) => (
-            <StaggerItem key={card.title}>
+            <StaggerItem key={card.title} className={card.className}>
               <MagicBento className="h-full" contentClassName="p-6">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-card border border-elevated bg-deep text-teal">
+                <div className="mb-5 flex h-10 w-10 items-center justify-center border-b border-teal/60 text-teal">
                   <card.icon size={20} />
                 </div>
                 <h3 className="font-display text-lg font-normal text-off-white mb-2">

@@ -6,30 +6,30 @@
 
 @theme {
   /* ---- Colors: Backgrounds ---- */
-  --color-deep: #08090C;
-  --color-surface: #11131A;
-  --color-surface-alt: #191D28;
-  --color-elevated: #313746;
+  --color-deep: oklch(10% 0.012 260);
+  --color-surface: oklch(16% 0.018 260);
+  --color-surface-alt: oklch(20% 0.025 260);
+  --color-elevated: oklch(33% 0.034 260);
 
   /* ---- Colors: Accents ---- */
-  --color-teal: #D7A84F;
-  --color-tech-cyan: #B9C7FF;
-  --color-ts-blue: #7B93AD;
-  --color-pac-yellow: #E0C86F;
+  --color-teal: oklch(76% 0.124 82);
+  --color-tech-cyan: oklch(84% 0.066 275);
+  --color-ts-blue: oklch(66% 0.047 252);
+  --color-pac-yellow: oklch(81% 0.115 91);
 
   /* ---- Colors: Text ---- */
-  --color-off-white: #F3EFE4;
-  --color-subtle: #9FA6B4;
-  --color-muted: #C9D0DE;
+  --color-off-white: oklch(94% 0.018 92);
+  --color-subtle: oklch(73% 0.024 260);
+  --color-muted: oklch(84% 0.024 260);
 
   /* ---- Colors: Semantic ---- */
-  --color-success: #339933;
-  --color-success-alt: #47A248;
-  --color-error: #DC382D;
+  --color-success: oklch(56% 0.164 142);
+  --color-success-alt: oklch(61% 0.16 145);
+  --color-error: oklch(60% 0.2 29);
 
   /* ---- Typography ---- */
-  --font-display: Georgia, Cambria, 'Times New Roman', serif;
-  --font-body: var(--font-outfit, Inter, ui-sans-serif, system-ui, sans-serif);
+  --font-display: Constantia, Georgia, Cambria, 'Times New Roman', serif;
+  --font-body: Aptos, 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
 
   /* ---- Border Radius ---- */
@@ -38,9 +38,9 @@
   --radius-pill: 6px;
 
   /* ---- Shadows (DESIGN.md elevation levels) ---- */
-  --shadow-elevated: 0px 18px 40px rgba(0, 0, 0, 0.22);
+  --shadow-elevated: 0px 18px 40px oklch(0% 0 0 / 0.22);
   --shadow-button: none;
-  --shadow-nav: 0px 10px 30px rgba(0, 0, 0, 0.24);
+  --shadow-nav: 0px 10px 30px oklch(0% 0 0 / 0.24);
 
   /* ---- Animations ---- */
   --animate-float: float 6s ease-in-out infinite;
@@ -136,7 +136,7 @@ body {
 }
 
 ::selection {
-  background-color: rgba(215, 168, 79, 0.35);
+  background-color: oklch(76% 0.124 82 / 0.35);
   color: var(--color-off-white);
 }
 
@@ -171,7 +171,6 @@ body {
    UTILITY CLASSES
    ============================================ */
 
-/* Noise overlay for subtle background texture */
 .noise-overlay {
   position: fixed;
   inset: 0;
@@ -182,73 +181,9 @@ body {
   background-repeat: repeat;
 }
 
-/* Glassmorphism */
-.glass {
-  background: rgba(23, 21, 17, 0.86);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(57, 51, 41, 0.8);
-}
-
-.glass-strong {
-  background: rgba(17, 16, 13, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(57, 51, 41, 0.85);
-}
-
-/* Glow effects */
-.glow-teal {
-  box-shadow: none;
-}
-
-.glow-teal-strong {
-  box-shadow: none;
-}
-
-/* Animated gradient border */
-@property --border-angle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 0deg;
-}
-
-.animated-border {
-  --border-angle: 0deg;
-  border: 1px solid var(--color-elevated);
-  background: var(--color-surface);
-}
-
-@keyframes rotate-border {
-  to {
-    --border-angle: 360deg;
-  }
-}
-
-/* Gradient text */
-.text-gradient {
-  color: var(--color-off-white);
-}
-
-.text-gradient-teal {
-  color: var(--color-teal);
-}
-
-/* Background decorative blurs */
-.blur-orb {
-  display: none;
-}
-
-.blur-orb-teal {
-  background: rgba(36, 219, 201, 0.08);
-}
-
-.blur-orb-blue {
-  background: rgba(49, 120, 198, 0.06);
-}
-
-.blur-orb-cyan {
-  background: rgba(97, 218, 251, 0.05);
+.nav-shell {
+  background: oklch(10% 0.012 260 / 0.9);
+  border-bottom: 1px solid oklch(33% 0.034 260 / 0.72);
 }
 
 /* Section divider */
